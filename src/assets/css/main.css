@@ -1,0 +1,56 @@
+:root {
+    --app-white: #F8FFE5;
+    --app-green: #06D6A0;
+    --app-blue: #1B9AAA;
+    --app-pink: #EF476F;
+    --app-yellow: #FFC43D;
+    --app-grey: #343434;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+}
+
+.fullscreen {
+    height: 100vh;
+}
+
+h1 {
+    font-size: 3.052rem;
+}
+
+h2 {
+    font-size: 2.441rem;
+}
+
+h3 {
+    font-size: 1.953rem;
+}
+
+h4 {
+    font-size: 1.563rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+h7 {
+    font-size: 0.8rem;
+}
+
+h8 {
+    font-size: 0.64rem;
+}
+
+h9 {
+    font-size: 0.512rem;
+}
