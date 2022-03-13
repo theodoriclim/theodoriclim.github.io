@@ -1,22 +1,24 @@
 <template>
-  <div class="fullscreen">
+  <v-layout justify-center class="fullscreen">
     <v-container>
       <v-row>
-        <v-col :cols="8">
+        <v-col>
           <v-col id="greeting-text-container">
-            <h2>Hi! I'm</h2>
+            <h2 class="font-weight-bold">Hi! I'm</h2>
             <br />
-            <h2>Theodoric.</h2>
+            <h2 class="font-weight-bold">Theodoric.</h2>
           </v-col>
-          <v-col id="caption-text-container">
-            <h7>Full-Stack Web Developer from Singapore.</h7>
+          <v-col id="caption-text-container" class="mb-10 pt-0">
+            <span class="font-weight-medium"
+              >Full-Stack Web Developer from Singapore.</span
+            >
           </v-col>
-          <v-col id="download-btn-container">
-            <v-btn class="rounded-pill">
-              <h9>Download CV</h9>
+          <v-col id="download-btn-container" class="mb-16">
+            <v-btn class="rounded-pill pa-8">
+              <span class="font-weight-medium">Download CV</span>
             </v-btn>
           </v-col>
-          <v-row id="contact-icons-container" class="ml-0">
+          <v-row id="contact-icons-container" class="ml-0 mt-2">
             <icon class="ml-6 mr-6" icon="bxs:phone" color="white"></icon>
             <icon
               class="ml-6 mr-6"
@@ -30,86 +32,61 @@
             ></icon>
           </v-row>
         </v-col>
-        <v-col :cols="4">
-          <v-card
-            id="large-code-icon-container"
-            class="rounded-xl"
-            elevation="12"
-          >
+        <v-col id="large-code-icon-container" align="right">
+          <v-card class="rounded-xl" elevation="12">
             <icon id="large-code-icon" icon="ant-design:code-filled"></icon>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </v-layout>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { Component, Vue } from "vue-property-decorator";
 
 import { Icon } from "@iconify/vue2";
 
-export default Vue.extend({
-  name: "LandingPage",
-
+@Component({
   components: {
     Icon,
   },
-});
+})
+export default class LandingPage extends Vue {}
 </script>
 
 <style scoped>
-@media (min-width: 1264px) {
-  .fullscreen {
-    background-color: var(--app-green);
-  }
+.fullscreen {
+  background-color: var(--app-green);
+}
 
-  .container {
-    padding-top: 30vh;
-    margin-left: 2.3rem;
-    margin-right: 2.3rem;
+@media (min-width: 1264px) {
+  .fullscreen > .container {
+    padding-top: 27.5vh;
   }
 
   #greeting-text-container {
     line-height: 125%;
   }
 
-  #greeting-text-container h2 {
+  #greeting-text-container > h2 {
     color: white;
-    font-weight: 700;
   }
 
-  #caption-text-container {
-    padding-top: 0;
-  }
-
-  #caption-text-container h7 {
+  #caption-text-container > span {
     color: white;
-    font-weight: 500;
+    font-size: var(--font-size-seven);
   }
 
-  #download-btn-container {
-    margin-top: 1rem;
-  }
-
-  #download-btn-container .v-btn {
+  #download-btn-container > .v-btn {
     background-color: var(--app-pink);
     color: white;
-    padding: 0.8rem 0.8rem;
+    font-size: var(--font-size-nine);
   }
 
-  #download-btn-container .v-btn h8 {
-    font-weight: 500;
-  }
-
-  #contact-icons-container {
-    margin-top: 1.8rem;
-  }
-
-  #large-code-icon-container,
-  .v-card {
-    min-width: 16em;
-    height: 16em;
+  #large-code-icon-container > .v-card {
+    max-width: 16em;
+    max-height: 16em;
   }
 
   #large-code-icon {

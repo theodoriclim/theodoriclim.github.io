@@ -5,6 +5,16 @@
     --app-pink: #EF476F;
     --app-yellow: #FFC43D;
     --app-grey: #343434;
+
+    --font-size-one: 3.052rem;
+    --font-size-two: 2.441rem;
+    --font-size-three: 1.953rem;
+    --font-size-four: 1.563rem;
+    --font-size-five: 1.25rem;
+    --font-size-six: 1rem;
+    --font-size-seven: 0.8rem;
+    --font-size-eight: 0.64rem;
+    --font-size-nine: 0.512rem;
 }
 
 html, body {
@@ -19,38 +29,32 @@ html, body {
     height: 100vh;
 }
 
+.fullscreen > .container {
+    padding: 0;
+    margin: 0 2.3rem;
+    max-width: 100rem;
+}
+
 h1 {
-    font-size: 3.052rem;
+    font-size: var(--font-size-one);
 }
 
 h2 {
-    font-size: 2.441rem;
+    font-size: var(--font-size-two);
 }
 
 h3 {
-    font-size: 1.953rem;
+    font-size: var(--font-size-three);
 }
 
 h4 {
-    font-size: 1.563rem;
+    font-size: var(--font-size-four);
 }
 
 h5 {
-    font-size: 1.25rem;
+    font-size: var(--font-size-five);
 }
 
 h6 {
-    font-size: 1rem;
-}
-
-h7 {
-    font-size: 0.8rem;
-}
-
-h8 {
-    font-size: 0.64rem;
-}
-
-h9 {
-    font-size: 0.512rem;
+    font-size: var(--font-size-six);
 }
