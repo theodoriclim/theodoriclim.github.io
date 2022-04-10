@@ -107,7 +107,7 @@ export default class TitleText extends Vue {
   position: absolute;
   font-size: 3.75rem;
   font-weight: 600;
-  opacity: 5%;
+  opacity: 0.05;
   bottom: -1.5rem;
 }
 
