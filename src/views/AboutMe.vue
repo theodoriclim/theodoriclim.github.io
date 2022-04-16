@@ -8,8 +8,9 @@
         secondary="Profile"
         divider-color="var(--app-blue)"
         divider-width="5.75rem"
+        data-aos="fade-up"
       />
-      <v-container>
+      <v-container data-aos="fade-up">
         <v-row>
           <v-col col="1" class="profile-text">
             {{ leftText }}

@@ -1,6 +1,6 @@
 <template>
   <v-layout class="fullscreen">
-    <v-container>
+    <v-container data-aos="fade-up">
       <title-text
         class="mb-12"
         justify="end"
@@ -10,18 +10,18 @@
         divider-width="3.25rem"
       />
       <v-container>
-        <v-row>
+        <v-row data-aos="fade-left">
           <h4>Languages</h4>
         </v-row>
-        <v-row align="center">
+        <v-row data-aos="fade-left" align="center">
           <v-col v-for="(language, index) in languages" :key="index" cols="1">
             <v-img :src="language"></v-img>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row data-aos="fade-right">
           <h4>Frameworks & Tools</h4>
         </v-row>
-        <v-row align="center">
+        <v-row data-aos="fade-right" align="center">
           <v-col
             v-for="(frameworkOrTool, index) in frameworksAndTools"
             :key="index"

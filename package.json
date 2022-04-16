@@ -11,6 +11,8 @@
     "deploy": "deploy.bat"
   },
   "dependencies": {
+    "@types/aos": "^3.0.4",
+    "aos": "^2.3.4",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",

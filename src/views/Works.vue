@@ -8,6 +8,7 @@
         secondary="Projects"
         divider-color="var(--app-yellow)"
         divider-width="3.5rem"
+        data-aos="fade-up"
       />
       <v-container id="work-container">
         <v-row>
@@ -107,21 +108,24 @@ export default class Works extends Vue {
         }),
         new ExtraWorkImage({
           src: this.getImageURL("figma_6.png"),
-          caption: "The final coloring of the first iteration of resumes. I started off with a combination of green and black. " +
-              "After getting some feedback on the coloring, I decided to create two versions. A colored version using blue-green highlights, " +
-              "followed by a black and white one. (1st page)",
+          caption:
+            "The final coloring of the first iteration of resumes. I started off with a combination of green and black. " +
+            "After getting some feedback on the coloring, I decided to create two versions. A colored version using blue-green highlights, " +
+            "followed by a black and white one. (1st page)",
         }),
         new ExtraWorkImage({
           src: this.getImageURL("figma_7.png"),
-          caption: "The final coloring of the first iteration of resumes. I started off with a combination of green and black. " +
-              "After getting some feedback on the coloring, I decided to create two versions. A colored version using blue-green highlights, " +
-              "followed by a black and white one. (2nd page)",
+          caption:
+            "The final coloring of the first iteration of resumes. I started off with a combination of green and black. " +
+            "After getting some feedback on the coloring, I decided to create two versions. A colored version using blue-green highlights, " +
+            "followed by a black and white one. (2nd page)",
         }),
         new ExtraWorkImage({
           src: this.getImageURL("figma_8.png"),
-          caption: "This is the second and last iteration of my resume, that was designed to match this webpage. After getting feedback on the content, " +
-              "I decided to reduce the wordiness, either summarising them as point forms or removing them completely. Then, I was able to concise everything " +
-              "to a single page.",
+          caption:
+            "This is the second and last iteration of my resume, that was designed to match this webpage. After getting feedback on the content, " +
+            "I decided to reduce the wordiness, either summarising them as point forms or removing them completely. Then, I was able to concise everything " +
+            "to a single page.",
         }),
       ],
     }),

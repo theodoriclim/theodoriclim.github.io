@@ -61,6 +61,8 @@ export default class TitleText extends Vue {
 
   private closeGallery() {
     this.overlay = false;
+    // Immediately unfocus on image gallery when it is open
+    this.imageGallery.$el.blur();
     document.documentElement.style.overflow = "auto";
   }
 }

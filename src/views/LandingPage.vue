@@ -1,6 +1,6 @@
 <template>
-  <v-layout justify-center class="fullscreen">
-    <v-container>
+  <v-layout justify-center id="landing-page-container" class="fullscreen">
+    <v-container data-aos="fade-left">
       <v-row>
         <v-col>
           <v-col id="greeting-text-container">
