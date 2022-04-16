@@ -83,6 +83,47 @@ export default class Works extends Vue {
       details:
         "I am by no means a UI/UX designer, but decided to try my hand at it after seeing the work of my colleague during my internship and VA Insight. " +
         "The picture is a glimpse of the figma design that I created for the purpose of developing this webpage! You can see the bubbles there, which are his comments!",
+      extraImages: [
+        new ExtraWorkImage({
+          src: this.getImageURL("figma_2.png"),
+          caption:
+            "An overall view of the designs I have for this personal branding project. " +
+            "There are two main sections, the Web and Resume.",
+        }),
+        new ExtraWorkImage({
+          src: this.getImageURL("figma_3.png"),
+          caption: "Designs for the web desktop's first iteration!",
+        }),
+        new ExtraWorkImage({
+          src: this.getImageURL("figma_4.png"),
+          caption:
+            "Designs for the web desktop's second iteration, and the one that I have decided to work with!",
+        }),
+        new ExtraWorkImage({
+          src: this.getImageURL("figma_5.png"),
+          caption:
+            "Designs for the resume's first iteration. It is a little hard to see, " +
+            "so in the next image, I zoomed into the set that was the inspiration for the second (and last) iteration!",
+        }),
+        new ExtraWorkImage({
+          src: this.getImageURL("figma_6.png"),
+          caption: "The final coloring of the first iteration of resumes. I started off with a combination of green and black. " +
+              "After getting some feedback on the coloring, I decided to create two versions. A colored version using blue-green highlights, " +
+              "followed by a black and white one. (1st page)",
+        }),
+        new ExtraWorkImage({
+          src: this.getImageURL("figma_7.png"),
+          caption: "The final coloring of the first iteration of resumes. I started off with a combination of green and black. " +
+              "After getting some feedback on the coloring, I decided to create two versions. A colored version using blue-green highlights, " +
+              "followed by a black and white one. (2nd page)",
+        }),
+        new ExtraWorkImage({
+          src: this.getImageURL("figma_8.png"),
+          caption: "This is the second and last iteration of my resume, that was designed to match this webpage. After getting feedback on the content, " +
+              "I decided to reduce the wordiness, either summarising them as point forms or removing them completely. Then, I was able to concise everything " +
+              "to a single page.",
+        }),
+      ],
     }),
   ];
 

@@ -18,11 +18,11 @@
           <icon class="control-icon" icon="akar-icons:chevron-left"></icon>
         </v-btn>
       </v-col>
-      <v-col cols="8" align="center">
+      <v-col cols="8">
         <span v-if="images.length === 0">There are no images!</span>
         <v-container id="image-container" v-if="images.length > 0">
           <v-img :src="image.src" :max-height="imageMaxHeight"></v-img>
-          <div id="image-caption">{{ image.caption }}</div>
+          <div class="pl-4 pr-4 pt-2 pd-2" id="image-caption">{{ image.caption }}</div>
         </v-container>
       </v-col>
       <v-col cols="2" align="center">
@@ -109,6 +109,7 @@ export default class ImageGallery extends Vue {
   background-color: var(--app-grey);
   opacity: 0.95;
   padding: 5px;
+  justify-content: space-evenly;
 }
 
 .v-overlay {
