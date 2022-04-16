@@ -30,6 +30,9 @@ export default Vue.extend({
     Contact,
   },
 
+  mounted() {
+  },
+
   data: () => ({
     //
   }),
