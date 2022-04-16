@@ -14,9 +14,27 @@
             >
           </v-col>
           <v-col id="download-btn-container" class="mb-16">
-            <v-btn class="rounded-pill pa-8">
-              <span class="font-weight-medium">Download CV</span>
-            </v-btn>
+            <v-menu nudge-bottom="8px" close-delay="250" open-on-hover offset-y>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn class="rounded-pill pa-8" dark v-bind="attrs" v-on="on">
+                  <span class="font-weight-medium">Download CV</span>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="(option, index) in downloadCVOptions"
+                  :class="getBackgroundColor(index)"
+                  :key="index"
+                  :href="option.resumeLink"
+                  :download="option.resumeName"
+                >
+                  <v-list-item-icon>
+                    <icon icon="clarity:document-solid"></icon>
+                  </v-list-item-icon>
+                  <v-list-item-title v-text="option.name"></v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </v-col>
           <contact-icons></contact-icons>
         </v-col>
@@ -32,26 +50,83 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ContactIcons from "@/components/ContactIcons.vue"
+import ContactIcons from "@/components/ContactIcons.vue";
 
 import { Icon } from "@iconify/vue2";
 
 @Component({
   components: {
     Icon,
-    ContactIcons
+    ContactIcons,
   },
 })
-export default class LandingPage extends Vue {}
+export default class LandingPage extends Vue {
+  private readonly downloadCVOptions = [
+    {
+      name: "Black & White",
+      resumeName: "Resume_Theodoric_Keith_Lim_B&W.pdf",
+      resumeLink: this.getResume("Resume_Theodoric_Keith_Lim_B&W.pdf"),
+    },
+    {
+      name: "Colored",
+      resumeName: "Resume_Theodoric_Keith_Lim_Colored.pdf",
+      resumeLink: this.getResume("Resume_Theodoric_Keith_Lim_Colored.pdf"),
+    },
+  ];
+
+  getBackgroundColor(index: number): string {
+    if (index === 0) {
+      return "white-background";
+    } else if (index === 1) {
+      return "white-background";
+    } else {
+      return "";
+    }
+  }
+
+  getResume(resumeName: string): any {
+    return require("@/assets/resumes/".concat(resumeName));
+  }
+}
 </script>
 
 <style scoped>
+.black-background {
+  background-color: black !important;
+}
+
+.white-background {
+  background-color: var(--app-white) !important;
+}
+
+.blue-background {
+  background-color: var(--app-blue) !important;
+}
+
 .fullscreen {
   background-color: var(--app-green);
 }
 
 .fullscreen > .container {
   padding-top: 27.5vh;
+}
+
+.v-list {
+  padding: 0;
+}
+
+.v-list-item {
+  max-height: 0;
+}
+
+.v-list-item__title {
+  color: var(--app-grey);
+  font-size: var(--font-size-nine);
+}
+
+.v-list-item__icon {
+  color: var(--app-grey);
+  align-self: center;
 }
 
 #greeting-text-container {
