@@ -1,17 +1,33 @@
 <template>
   <v-layout justify-center id="landing-page-container" class="fullscreen">
-    <v-container data-aos="fade-left">
+    <v-container :style="containerStyle" data-aos="fade-left">
       <v-row>
         <v-col>
           <v-col id="greeting-text-container">
-            <h2 class="font-weight-bold">Hi! I'm</h2>
-            <br />
-            <h2 class="font-weight-bold">Theodoric.</h2>
+            <div v-if="isMobile">
+              <h4 class="font-weight-bold">Hi! I'm</h4>
+              <br />
+              <h4 class="font-weight-bold">Theodoric.</h4>
+            </div>
+            <div v-else>
+              <h2 class="font-weight-bold">Hi! I'm</h2>
+              <br />
+              <h2 class="font-weight-bold">Theodoric.</h2>
+            </div>
           </v-col>
           <v-col id="caption-text-container" class="mb-10 pt-0">
-            <span class="font-weight-medium"
-              >Full-Stack Web Developer from Singapore.</span
-            >
+            <div v-if="isMobile">
+              <span class="font-weight-medium">Full-Stack</span>
+              <br />
+              <span class="font-weight-medium">Web Developer</span>
+              <br />
+              <span class="font-weight-medium">From Singapore.</span>
+            </div>
+            <div v-else>
+              <span class="font-weight-medium"
+                >Full-Stack Web Developer from Singapore.</span
+              >
+            </div>
           </v-col>
           <v-col id="download-btn-container" class="mb-16">
             <v-menu nudge-bottom="8px" close-delay="250" open-on-hover offset-y>
@@ -36,9 +52,9 @@
               </v-list>
             </v-menu>
           </v-col>
-          <contact-icons></contact-icons>
+          <contact-icons v-if="!isMobile"></contact-icons>
         </v-col>
-        <v-col id="large-code-icon-container" align="right">
+        <v-col v-if="!isMobile" id="large-code-icon-container" align="right">
           <v-card class="rounded-xl" elevation="12">
             <icon id="large-code-icon" icon="ant-design:code-filled"></icon>
           </v-card>
@@ -49,7 +65,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import ContactIcons from "@/components/ContactIcons.vue";
 
 import { Icon } from "@iconify/vue2";
@@ -61,6 +77,9 @@ import { Icon } from "@iconify/vue2";
   },
 })
 export default class LandingPage extends Vue {
+  @Prop({ required: true, type: Boolean })
+  private readonly isMobile: boolean;
+
   private readonly downloadCVOptions = [
     {
       name: "Black & White",
@@ -87,28 +106,24 @@ export default class LandingPage extends Vue {
   getResume(resumeName: string): any {
     return require("@/assets/resumes/".concat(resumeName));
   }
+
+  get containerStyle(): any {
+    if (this.isMobile) {
+      return { "padding-top": "12vh", margin: "0" };
+    } else {
+      return { "padding-top": "27.5vh", margin: "0 2.3rem" };
+    }
+  }
 }
 </script>
 
 <style scoped>
-.black-background {
-  background-color: black !important;
-}
-
 .white-background {
   background-color: var(--app-white) !important;
 }
 
-.blue-background {
-  background-color: var(--app-blue) !important;
-}
-
 .fullscreen {
   background-color: var(--app-green);
-}
-
-.fullscreen > .container {
-  padding-top: 27.5vh;
 }
 
 .v-list {
@@ -133,11 +148,15 @@ export default class LandingPage extends Vue {
   line-height: 125%;
 }
 
-#greeting-text-container > h2 {
+#greeting-text-container > div > h2 {
   color: white;
 }
 
-#caption-text-container > span {
+#greeting-text-container > div > h4 {
+  color: white;
+}
+
+#caption-text-container > div > span {
   color: white;
   font-size: var(--font-size-seven);
 }
@@ -149,13 +168,17 @@ export default class LandingPage extends Vue {
 }
 
 #large-code-icon-container > .v-card {
-  max-width: 16em;
-  max-height: 16em;
+  max-width: 16rem;
+  max-height: 16rem;
+  width: 38vw;
+  height: 38vw;
 }
 
 #large-code-icon {
   background-color: var(--app-blue);
   color: var(--app-white);
   font-size: 16rem;
+  width: 38vw;
+  height: 38vw;
 }
 </style>

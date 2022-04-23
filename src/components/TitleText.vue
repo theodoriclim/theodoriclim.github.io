@@ -3,7 +3,18 @@
     <v-col :order="order1"></v-col>
     <v-col :order="order2"></v-col>
     <v-col :order="order3">
-      <v-container id="title-text-container">
+      <v-container v-if="isMobile" id="mobile-title-text-container">
+        <v-row justify="center">
+          <span id="mobile-title-text-main">{{ main }}</span>
+        </v-row>
+        <v-row justify="center">
+          <span id="mobile-title-text-secondary">{{ secondary }}</span>
+        </v-row>
+        <v-row justify="center">
+          <hr id="mobile-title-text-border" :style="hrCSS" />
+        </v-row>
+      </v-container>
+      <v-container v-else id="title-text-container">
         <v-row justify="center">
           <h4 id="title-text-main">{{ main }}</h4>
         </v-row>
@@ -23,6 +34,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class TitleText extends Vue {
+  @Prop({ required: true, type: Boolean })
+  private readonly isMobile: boolean;
+
   @Prop({ required: true, type: String, default: "center" })
   readonly justify!: string;
 
@@ -96,11 +110,27 @@ export default class TitleText extends Vue {
   user-select: none;
 }
 
+#mobile-title-text-container {
+  white-space: nowrap;
+}
+
 #title-text-container {
   position: relative;
 }
 
+#mobile-title-text-main {
+  font-weight: bold;
+}
+
 #title-text-main {
+}
+
+#mobile-title-text-secondary {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 600;
+  opacity: 0.05;
+  bottom: -0.65rem;
 }
 
 #title-text-secondary {
@@ -109,6 +139,11 @@ export default class TitleText extends Vue {
   font-weight: 600;
   opacity: 0.05;
   bottom: -1.5rem;
+}
+
+#mobile-title-text-border {
+  border-style: solid;
+  border-width: 0.05rem;
 }
 
 #title-text-border {

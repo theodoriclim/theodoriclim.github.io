@@ -30,9 +30,20 @@ html, body {
     height: 100vh;
 }
 
+@media only screen and (max-width: 1300px) {
+    .fullscreen > .container {
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .fullscreen > .container {
+        margin: 0 2.3rem;
+    }
+}
+
 .fullscreen > .container {
     padding: 0;
-    margin: 0 2.3rem;
     max-width: 100rem;
 }
 

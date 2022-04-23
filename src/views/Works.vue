@@ -1,6 +1,6 @@
 <template>
   <v-layout class="fullscreen">
-    <v-container>
+    <v-container :style="containerStyle">
       <title-text
         class="mb-12"
         justify="start"
@@ -9,6 +9,7 @@
         divider-color="var(--app-yellow)"
         divider-width="3.5rem"
         data-aos="fade-up"
+        :isMobile="isMobile"
       />
       <v-container id="work-container">
         <v-row>
@@ -25,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { Work, ExtraWorkImage } from "@/models/Work";
 import WorkCard from "@/components/WorkCard.vue";
 import TitleText from "@/components/TitleText.vue";
@@ -37,6 +38,9 @@ import TitleText from "@/components/TitleText.vue";
   },
 })
 export default class Works extends Vue {
+  @Prop({ required: true, type: Boolean })
+  private readonly isMobile: boolean;
+
   private works: Array<Work> = [
     new Work({
       src: this.getImageURL("pcs_home.png"),
@@ -136,16 +140,20 @@ export default class Works extends Vue {
     // Need to figure out, i really don't know why
     return require("@/assets/images/works/".concat(imageName));
   }
+
+  get containerStyle(): any {
+    if (this.isMobile) {
+      return { "padding-top": "12vh", margin: "0" };
+    } else {
+      return { "padding-top": "5vh", margin: "0 2.3rem" };
+    }
+  }
 }
 </script>
 
 <style scoped>
 .fullscreen {
   background-color: var(--app-white);
-}
-
-.fullscreen > .container {
-  padding-top: 5vh;
 }
 
 #work-container {
