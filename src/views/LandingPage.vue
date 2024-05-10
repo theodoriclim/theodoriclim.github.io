@@ -19,21 +19,24 @@
             <div v-if="isMobile">
               <span class="font-weight-medium">Full-Stack</span>
               <br />
-              <span class="font-weight-medium">Web Developer</span>
+              <span class="font-weight-medium">Software Engineer</span>
               <br />
               <span class="font-weight-medium">From Singapore.</span>
             </div>
             <div v-else>
               <span class="font-weight-medium"
-                >Full-Stack Web Developer from Singapore.</span
+                >Full-Stack Software Engineer from Singapore.</span
               >
             </div>
           </v-col>
           <v-col id="download-btn-container" class="mb-16">
-            <v-menu nudge-bottom="8px" close-delay="250" open-on-hover offset-y>
+            <v-btn class="rounded-pill pa-8" dark v-bind="attrs" v-on="on" :href="getLatestResume()">
+              <span class="font-weight-medium">Download CV</span>
+            </v-btn>
+            <!-- <v-menu nudge-bottom="8px" close-delay="250" open-on-hover offset-y>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn class="rounded-pill pa-8" dark v-bind="attrs" v-on="on">
-                  <span class="font-weight-medium">Download CV</span>
+                  <span class="font-weight-medium" >Download CV</span>
                 </v-btn>
               </template>
               <v-list>
@@ -50,7 +53,7 @@
                   <v-list-item-title v-text="option.name"></v-list-item-title>
                 </v-list-item>
               </v-list>
-            </v-menu>
+            </v-menu> -->
           </v-col>
           <contact-icons v-if="!isMobile"></contact-icons>
         </v-col>
@@ -79,17 +82,17 @@ import { Icon } from "@iconify/vue2";
 export default class LandingPage extends Vue {
   @Prop({ required: true, type: Boolean })
   private readonly isMobile: boolean;
-
+  private readonly latestResume: string = "2024_05_Resume_Theodoric_Keith_Lim.pdf";  
   private readonly downloadCVOptions = [
     {
       name: "Black & White",
-      resumeName: "Resume_Theodoric_Keith_Lim_B&W.pdf",
-      resumeLink: this.getResume("Resume_Theodoric_Keith_Lim_B&W.pdf"),
+      resumeName: "2022_04_Resume_Theodoric_Keith_Lim_B&W.pdf",
+      resumeLink: this.getResume("2022_04_Resume_Theodoric_Keith_Lim_B&W.pdf"),
     },
     {
       name: "Colored",
-      resumeName: "Resume_Theodoric_Keith_Lim_Colored.pdf",
-      resumeLink: this.getResume("Resume_Theodoric_Keith_Lim_Colored.pdf"),
+      resumeName: "2022_04_Resume_Theodoric_Keith_Lim_Colored.pdf",
+      resumeLink: this.getResume("2022_04_Resume_Theodoric_Keith_Lim_Colored.pdf"),
     },
   ];
 
@@ -105,6 +108,10 @@ export default class LandingPage extends Vue {
 
   getResume(resumeName: string): any {
     return require("@/assets/resumes/".concat(resumeName));
+  }
+
+  getLatestResume(): any {
+    return this.getResume(this.latestResume);
   }
 
   get containerStyle(): any {
